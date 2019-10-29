@@ -2,6 +2,7 @@
 library(tidyverse)
 
 ######Fancy Linear Regression Plot Function###
+#code modified from: https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/
 ggplotRegression = function(linearModel) {
   ggplot(linearModel$model, aes_string(x = names(linearModel$model)[2], y = names(linearModel$model)[1])) + 
     geom_point(size = 2) + 
@@ -138,5 +139,5 @@ model2017 = lm(data = reshapeNSFData, formula =  reshapeNSFData$`2017_reg` ~ res
 summary(model2017)
 
 #Regression with R2 and p-value
-ggplotRegression(model2017)  +
+ggplotRegression(linearModel = model2017)  +
   labs(x = "Count of Awardees in 2016", y = "Count of Awardees in 2017")
